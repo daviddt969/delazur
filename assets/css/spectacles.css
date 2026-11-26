@@ -1,0 +1,176 @@
+/* Couleurs et dimensions propres à cette page. */
+.page-spectacles {
+  --rose: #d47ba7;
+  --jaune: #f4c555;
+  margin: 0;
+  background-color: #000;
+  color: white;
+  font-family: Montserrat, Arial, sans-serif;
+}
+
+.tournee,
+.tournee * {
+  box-sizing: border-box;
+}
+
+.tournee {
+  width: 84%;
+  margin: 0 auto;
+  padding: 5.5rem 0;
+}
+
+.tournee h1 {
+  margin: 0 0 2.75rem;
+  color: var(--rose);
+  font-family: "Brush Script MT", cursive;
+  font-style: italic;
+  letter-spacing: .12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Sept colonnes. Chaque carte en occupe trois. */
+.dates-spectacles {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.carte-spectacle {
+  grid-column: 3 / span 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(212, 123, 167, .55);
+  background-color: rgba(244, 197, 85, .3);
+}
+
+.carte-spectacle:nth-child(2),
+.carte-spectacle:nth-child(5),
+.carte-spectacle:nth-child(8) {
+  grid-column: 2 / span 3;
+}
+
+.carte-spectacle:nth-child(3),
+.carte-spectacle:nth-child(7),
+.carte-spectacle:nth-child(11) {
+  grid-column: 4 / span 3;
+}
+
+.carte-spectacle:nth-child(4) { grid-column: 1 / span 3; }
+.carte-spectacle:nth-child(9) { grid-column: 5 / span 3; }
+
+.carte-spectacle h2 { margin: 0; font-size: 1rem; }
+.carte-spectacle time { display: block; font-size: .75rem; font-weight: bold; }
+.carte-spectacle p { margin: .5rem 0 0; font-size: .7rem; }
+
+.tournee button, .tournee input { font: inherit; }
+.tournee button, .lien-salle { cursor: pointer; }
+
+.lien-salle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: .65rem .8rem;
+  background: var(--rose);
+  border: 1px solid var(--jaune);
+  color: black;
+  font-size: .62rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.lien-salle:hover, .lien-salle:focus-visible { background: white; }
+
+.tournee .ouvrir-infolettre {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 0;
+  background: var(--jaune);
+  color: white;
+  font-size: .75rem;
+  letter-spacing: .45em;
+  text-transform: uppercase;
+}
+
+.tournee .ouvrir-infolettre:hover,
+.tournee .ouvrir-infolettre:focus-visible { background: var(--rose); }
+
+/* Le navigateur centre le dialogue et gère le fond derrière lui. */
+.modale-infolettre {
+  position: fixed;
+  width: min(28.5rem, calc(100% - 2rem));
+  margin: auto;
+  padding: 4.25rem clamp(1.25rem, 4vw, 3.125rem) 3rem;
+  border: 0;
+  background: var(--jaune);
+  color: white;
+}
+
+.modale-infolettre::backdrop { background: rgba(0, 0, 0, .8); }
+.modale-infolettre h2 { margin: 0; font-size: 1.45rem; text-transform: uppercase; }
+.modale-infolettre p { margin: 1.25rem 0; }
+.modale-infolettre input {
+  width: 100%;
+  padding: .9rem;
+  border: 0;
+  border-bottom: 1px solid black;
+  border-radius: 0;
+  background: transparent;
+  color: black;
+}
+
+.modale-infolettre input::placeholder { color: black; opacity: 1; }
+.modale-infolettre input:focus { background: var(--rose); }
+
+.tournee .croix-infolettre {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  background: transparent;
+  color: black;
+  font-size: 1.4rem;
+}
+
+.action-infolettre {
+  display: block;
+  margin: 1.8rem auto 0;
+  padding: 1.2rem;
+  border: 0;
+  color: black;
+  background: #eee;
+  text-transform: uppercase;
+}
+
+.action-infolettre:hover, .action-infolettre:focus-visible { background: var(--rose); }
+.tournee :focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.ouvrir-infolettre:focus-visible { outline-color: white; }
+
+.texte-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Sous le breakpoint, les cartes suivent leur ordre dans le HTML. */
+@media (max-width: 1200px) {
+  .tournee { width: min(80%, 44rem); padding: 3rem 0; }
+  .dates-spectacles { grid-template-columns: 1fr; }
+  .dates-spectacles > .carte-spectacle:nth-child(n) {
+    grid-column: 1;
+    padding: 1.1rem;
+    gap: .65rem;
+  }
+  .carte-spectacle > div { min-width: 0; overflow-wrap: anywhere; }
+}
+
