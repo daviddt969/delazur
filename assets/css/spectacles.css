@@ -174,3 +174,171 @@
   .carte-spectacle > div { min-width: 0; overflow-wrap: anywhere; }
 }
 
+/* Version ordinateur de la page Spectacles */
+@media (width > 1200px) {
+
+  /* Le fond des spectacles reste noir sous la navigation. */
+  body.page-spectacles {
+    background: #000;
+  }
+
+  /* La photo du groupe occupe toute la largeur de l’en-tête. */
+  .page-spectacles > header {
+    grid-column: 1 / -1;
+  }
+
+  .page-spectacles > header > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 3.2vw 0;
+    background: url("../img/header.jpg") center center / cover no-repeat;
+  }
+
+  /* Le rectangle sombre derrière le logo laisse voir le groupe. */
+  .page-spectacles > header > div > img {
+    display: block;
+    width: 87.5%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .page-spectacles > header > nav {
+    background: #000;
+  }
+
+  .page-spectacles > header > nav > ul {
+    display: flex;
+    width: 87.5%;
+    margin: 0 auto;
+    padding: 0;
+    gap: 16px;
+    font-size: 20px;
+  }
+
+  .page-spectacles > header > nav li {
+    flex: 1;
+  }
+
+  /* La tournée prend sa largeur par rapport à toute la page. */
+  .tournee {
+    grid-column: 1 / -1;
+    width: min(83.6%, 1073px);
+    margin: 0 auto;
+    padding: 44px 0 12px;
+  }
+
+  .tournee h1 {
+    margin: 0 0 40px;
+    font-family: "Damion", cursive;
+    font-size: 32px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: 3px;
+  }
+
+  .dates-spectacles {
+    gap: 15px;
+  }
+
+  .carte-spectacle {
+    min-height: 79px;
+    padding: 14px 15px;
+  }
+
+  .carte-spectacle h2 {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.15;
+  }
+
+  .carte-spectacle time {
+    font-size: 11px;
+  }
+
+  .carte-spectacle p {
+    margin: 6px 0 0;
+    font-size: 9px;
+  }
+
+  .lien-salle {
+    min-width: 80px;
+    min-height: 31px;
+    padding: 8px;
+    font-size: 8px;
+  }
+
+  .tournee .ouvrir-infolettre {
+    min-height: 43px;
+    margin-top: 15px;
+    padding: 12px 20px;
+    font-size: 11px;
+    letter-spacing: 4px;
+  }
+}
+
+/* Masquer le trait sous le lien de la page active. */
+.page-spectacles header nav a[aria-current="page"] {
+  border-bottom-color: transparent;
+}
+
+/* Sur ordinateur, raccourcir les traits en gardant tout le lien cliquable. */
+@media (width > 1200px) {
+  .page-spectacles header nav a {
+    position: relative;
+    border-bottom-color: transparent;
+  }
+
+  .page-spectacles header nav a:not([aria-current="page"])::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background-color: currentColor;
+    pointer-events: none;
+  }
+
+  .page-spectacles header nav a[href="./boutique.html"]::after {
+  right: -8px;
+  }
+
+  .page-spectacles header nav a[href="./contact.html"]::after {
+    left: -8px;
+  }
+}
+
+/* Pied de page de la page Spectacles sur ordinateur */
+@media (width > 1200px) {
+  .page-spectacles footer {
+    padding: 0 25px;
+    font-size: 7px;
+  }
+
+  .page-spectacles footer img {
+    display: block;
+    width: 75px;
+    height: auto;
+  }
+
+  .page-spectacles footer div:nth-child(3) ul {
+    align-items: center;
+    gap: 0;
+    font-size: 15px;
+  }
+
+  .page-spectacles footer div:nth-child(3) li {
+    padding: 0;
+  }
+
+  .page-spectacles footer div:nth-child(3) a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+  }
+}
